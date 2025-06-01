@@ -21,14 +21,23 @@ pipeline{
         }
         stage("plan"){
             steps{
-                sh "echo this is bulid"
+                sh '''
+                  cd 01-vpc
+                  terraform plan
+                '''
             }
             
         }
         stage("apply"){
+            input{
+                message "should we continue"
+                ok "Yes! we should."
+            }
             steps{
-                sh "echo this is deploy"
-                sh "echo test the webhook trigger"
+                sh '''
+                  cd 01-vpc
+                  terraform apply --auto-approve
+                '''
             }
         }
 
