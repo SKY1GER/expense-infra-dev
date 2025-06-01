@@ -1,0 +1,83 @@
+- name: SG rules
+  sg:
+  - expense-dev-db
+  - expense-dev-backend
+  - expense-dev-frontend
+  - expense-dev-bastion
+  - expense-dev-ansible
+  - expense-dev-app-alb #backend alb
+  - expense-dev-vpn
+  expense-dev-vpn:
+  - name: vpn_public
+    desc: vpn accepting connnections from public
+    source: public
+    port: 443, 943, 22, 1194
+  db:
+  - name: db_backend
+    desc: db accepting backend connections from backend
+    source: backend
+    port: 3306
+  - name: db_bastion
+    desc: db accepting bastion connections from backend
+    source: bastion
+    port: 3306
+  - name: db_vpn
+    desc: db accepting bastion connections from connections
+    source: vpn
+    port: 3306
+  app_alb:
+  - name: app_alb_vpn
+    desc: app_alb accepting connections from VPN
+    source: vpn
+    port: 80 #HTTP:80, HTTPS:443
+  backend:
+  - name: backend_app_alb
+    desc: backend accepting connections from app alb
+    source: app-alb
+    port: 8080
+  - name: backend_vpn_ssh
+    desc: backend accepting connections from VPN
+    source: VPN
+    port: 22
+  - name: backend_vpn_http
+    desc: backend accepting connections from VPN
+    source: VPN
+    port: 8080
+  - name: backend_bastion
+    desc: backend accepting connections from bastion
+    source: frontend
+    port: 22
+  frontend:
+    - name: frontend_public
+      desc: frontend accepting connections from public
+      source: public
+      port: 80
+    - name: frontend_bastion
+      desc: frontend accepting connections from public
+      source: public
+      port: 80
+    - name: frontend_ansible
+      desc: frontend accepting connections from ansible
+      source: ansible
+      port: 22
+  web_alb:
+  - name: web_alb_public
+    desc: web alb accepting connections from public
+    source: public
+    port: 80
+  - name: web_alb_public_https
+    desc: web alb accepting connections from public
+    source: public
+    port: 443
+  bastion:
+    - name: bastion_public
+      desc: bastion accepting connections from public
+      source: public #your home ip adress
+      port: 22
+  ansible:
+  - name: ansible_public
+    desc: ansible accepting connections from public
+    source: public #your home ip adress
+    port: 22
+      
+  
