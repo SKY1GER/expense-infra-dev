@@ -14,7 +14,6 @@ pipeline{
             steps{
                 sh  '''
                    cd 01-vpc
-                   ******************
                 '''
             }
             
@@ -23,7 +22,6 @@ pipeline{
             steps{
                 sh '''
                   cd 01-vpc
-                  ****************
                 '''
             }
             
