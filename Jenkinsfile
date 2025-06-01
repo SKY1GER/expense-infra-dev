@@ -6,13 +6,14 @@ pipeline{
         // Timeout counter starts before agent is allocated
         timeout(time: 10, unit: "MINUTES")
         disableConcurrentBuilds()
+        ansiColour('xterm')
     }
 
     stages{
         stage("init"){
             steps{
                 sh  '''
-                ls -d */
+                
                 '''
             }
             
