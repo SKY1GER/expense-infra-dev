@@ -7,10 +7,7 @@ pipeline{
         timeout(time: 10, unit: "MINUTES")
         disableConcurrentBuilds()
     }
-    environment{
-        DEPLOY_TO = "Production"
-        GREETING = "GOOD MORNING"
-    }
+
     stages{
         stage("init"){
             steps{
@@ -47,4 +44,3 @@ pipeline{
             echo "this will run only if build fails"
         }
     }
-}
