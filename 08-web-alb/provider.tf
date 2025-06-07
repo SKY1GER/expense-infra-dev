@@ -9,7 +9,7 @@ terraform {
     bucket = "balasai16"
     key    = "expense-dev-web-alb"
     region = "us-east-1"
-    dynamodb_table = "daws80s-locking"
+    dynamodb_table = "daws79s-locking"
   }
 }
 
