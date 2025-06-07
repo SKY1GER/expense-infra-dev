@@ -23,6 +23,7 @@ pipeline{
             steps{
                 sh '''
                   cd 01-vpc
+                  terraform plan
                 '''
             }
             
@@ -35,7 +36,7 @@ pipeline{
             steps{
                 sh '''
                   cd 01-vpc
-                  terraform destroy --auto-approve
+                  terraform apply --auto-approve
                 '''
             }
         }
