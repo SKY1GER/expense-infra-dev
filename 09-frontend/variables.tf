@@ -18,3 +18,8 @@ variable "common_tags" {
 variable "zone_name" {
   default = "daws80s.online"
 }
+
+#created appVersion variable to pass to terraform
+variable "appVersion"{
+  
+}

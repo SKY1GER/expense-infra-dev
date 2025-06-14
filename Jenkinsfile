@@ -11,6 +11,7 @@ pipeline{
     parameters{
         choice(name: "action",  choices: ['apply', 'destroy'], description: "please select to apply or destroy")
     }
+    
 
     stages{
         stage("init"){

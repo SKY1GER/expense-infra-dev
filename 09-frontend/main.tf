@@ -36,7 +36,7 @@ resource "null_resource" "frontend" {
     provisioner "remote-exec" {
       inline = [
           "chmod +x /tmp/${var.common_tags.Component}.sh",
-          "sudo sh /tmp/${var.common_tags.Component}.sh ${var.common_tags.Component} ${var.environment}"
+          "sudo sh /tmp/${var.common_tags.Component}.sh ${var.common_tags.Component} ${var.environment} ${var.appVersion}"
         ]
     }
 
