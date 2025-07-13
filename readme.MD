@@ -1,5 +1,3 @@
-#Jenkins
+# Expense Architecture
 
-*** Plugins ***
-* Pipeline stage view
-* Ansi colour
+![alt text](expense-infra-dev.drawio.svg)
